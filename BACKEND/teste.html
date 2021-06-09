@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="noticias">
+
+    </div>
+    <template id="cardTemplate">
+        <div class="card">
+            <img src='{{SRC}}' />
+            <h2>{{TITULO}}</h2>
+        </div>
+    </template>
+
+    <script>
+        const template = document.getElementById('cardTemplate').innerHTML;
+        const noticiasElement = document.getElementById('noticias');
+        console.log(template);
+
+        fetch('http://localhost:1337/noticias')
+            .then(res => res.json())
+            .then(noticias => noticias.map(noticia => template.replace('{{TITULO}}', noticia.Titulo)))
+            .then(noticias => noticiasElement.innerHTML = noticias.join('\n'));
+    </script>
+</body>
+
+</html>

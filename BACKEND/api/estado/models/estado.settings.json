@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "estados",
+  "info": {
+    "name": "Estado"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nome": {
+      "type": "string"
+    },
+    "Sigla": {
+      "type": "string"
+    },
+    "Noticias": {
+      "via": "Estado",
+      "collection": "noticia"
+    }
+  }
+}

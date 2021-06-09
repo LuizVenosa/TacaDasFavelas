@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "Noticias",
+  "info": {
+    "name": "Noticia",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Data": {
+      "type": "datetime",
+      "required": true
+    },
+    "Titulo": {
+      "type": "string",
+      "required": true,
+      "maxLength": 250,
+      "unique": true
+    },
+    "Autor": {
+      "type": "string",
+      "required": true,
+      "default": "CUFA"
+    },
+    "Imagem": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": true,
+      "pluginOptions": {}
+    },
+    "Corpo": {
+      "type": "richtext",
+      "required": true
+    },
+    "Estado": {
+      "model": "estado",
+      "via": "Noticias"
+    },
+    "Destaque": {
+      "type": "boolean",
+      "default": false
+    },
+    "Permalink": {
+      "type": "uid",
+      "required": true,
+      "targetField": "Titulo"
+    }
+  }
+}
